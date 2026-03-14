@@ -14,7 +14,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
-import { FlightDeal, fetchFlightDeals } from '@/lib/travelEngine';
+import { FlightDeal } from '@/lib/travelEngine';
 
 export default function Home() {
   const [from, setFrom] = useState('');
@@ -63,12 +63,17 @@ export default function Home() {
     setResults([]);
 
     try {
-      const deals = await fetchFlightDeals({
-        from,
-        to,
-        date,
-        passengers,
+      const params = new URLSearchParams();
+      if (from) params.set('from', from);
+      if (to) params.set('to', to);
+      if (date) params.set('date', date);
+      if (passengers) params.set('passengers', String(passengers));
+
+      const res = await fetch(`/api/flight-deals?${params.toString()}`, {
+        cache: 'no-store',
       });
+
+      const deals: FlightDeal[] = await res.json();
       setResults(deals);
     } finally {
       setIsLoading(false);
