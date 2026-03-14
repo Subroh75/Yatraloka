@@ -45,7 +45,7 @@ export default function BlogPage() {
                 </h2>
                 <p className="mt-3 text-sm text-gray-600">{post.excerpt}</p>
                 <Link
-                  href={`#${post.id}`}
+                  href={`/blog/${post.id}`}
                   className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800"
                 >
                   Read more →
