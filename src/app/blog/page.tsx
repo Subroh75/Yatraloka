@@ -5,6 +5,12 @@ import Link from 'next/link';
 export default function BlogPage() {
   const posts = [
     {
+      id: 'why-yatraloka',
+      title: 'Why YatraLoka is the Smartest Way to Book Travel in 2026',
+      excerpt:
+        'Discover how our AI-driven platform revolutionizes travel booking with transparent pricing and unbeatable value.',
+    },
+    {
       id: 'welcome-to-yatraloka',
       title: 'Welcome to Yatraloka: Your Travel Planning HQ',
       excerpt:
