@@ -1,7 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { Search, Plane, Calendar, Users, Loader2 } from 'lucide-react';
+'use client';
+
+import { useMemo, useState } from 'react';
+import {
+  Search,
+  Plane,
+  Calendar,
+  Users,
+  Loader2,
+  Clock,
+  Sparkles,
+} from 'lucide-react';
 
 import { FlightDeal, fetchFlightDeals } from '@/lib/travelEngine';
 
@@ -12,6 +22,23 @@ export default function Home() {
   const [passengers, setPassengers] = useState(1);
   const [results, setResults] = useState<FlightDeal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const cheapestDealId = useMemo(() => {
+    if (results.length === 0) return null;
+    return results.reduce<string | null>((bestId, deal) => {
+      if (!bestId) return deal.id;
+      const bestDeal = results.find((r) => r.id === bestId);
+      if (!bestDeal) return deal.id;
+      return deal.adjustedPrice < bestDeal.adjustedPrice ? deal.id : bestId;
+    }, null);
+  }, [results]);
+
+  const getFlightTimes = (index: number) => {
+    const baseHour = 6 + (index % 5) * 2;
+    const depart = `${String(baseHour).padStart(2, '0')}:00`;
+    const arrive = `${String((baseHour + 2) % 24).padStart(2, '0')}:30`;
+    return { depart, arrive };
+  };
 
   const handleSearch = async () => {
     setIsLoading(true);
@@ -141,33 +168,84 @@ export default function Home() {
               </div>
             ) : results.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {results.map((deal) => (
-                  <div
-                    key={deal.id}
-                    className="bg-white/90 backdrop-blur-sm rounded-2xl p-5 shadow-lg border border-white/30"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div>
-                        <p className="text-sm text-gray-500">Airline</p>
-                        <p className="text-lg font-semibold text-gray-900">
-                          {deal.airline}
-                        </p>
+                {results.map((deal, index) => {
+                  const { depart, arrive } = getFlightTimes(index);
+                  const isCheapest = deal.id === cheapestDealId;
+
+                  return (
+                    <div
+                      key={deal.id}
+                      className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/40"
+                    >
+                      {isCheapest && (
+                        <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white shadow">
+                          <Sparkles className="h-4 w-4" />
+                          Limited Time Offer
+                        </div>
+                      )}
+
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white shadow">
+                            <Plane className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <p className="text-xs text-gray-500">Airline</p>
+                            <p className="text-lg font-semibold text-gray-900">
+                              {deal.airline}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-gray-500">Destination</p>
+                          <p className="text-lg font-semibold text-gray-900">
+                            {deal.destination}
+                          </p>
+                        </div>
                       </div>
-                      <p className="text-right text-sm text-gray-500">
-                        {deal.destination}
-                      </p>
+
+                      <div className="mt-5 grid grid-cols-2 gap-4">
+                        <div className="rounded-xl bg-gray-50 p-4">
+                          <div className="flex items-center gap-2 text-gray-500">
+                            <Clock className="h-4 w-4" />
+                            <p className="text-xs font-semibold">Departure</p>
+                          </div>
+                          <p className="mt-1 text-lg font-semibold text-gray-900">
+                            {depart}
+                          </p>
+                        </div>
+                        <div className="rounded-xl bg-gray-50 p-4">
+                          <div className="flex items-center gap-2 text-gray-500">
+                            <Clock className="h-4 w-4" />
+                            <p className="text-xs font-semibold">Arrival</p>
+                          </div>
+                          <p className="mt-1 text-lg font-semibold text-gray-900">
+                            {arrive}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 flex items-end justify-between gap-4">
+                        <div>
+                          <p className="text-xs text-gray-500">Adjusted Price</p>
+                          <p className="text-2xl font-bold text-gray-900">
+                            {formatCurrency(deal.adjustedPrice)}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Includes Growth Scout margin (≈{Math.round(deal.margin * 100)}%)
+                          </p>
+                        </div>
+
+                        <button
+                          type="button"
+                          className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-700"
+                        >
+                          Book Now
+                        </button>
+                      </div>
                     </div>
-                    <div className="mt-4">
-                      <p className="text-xs text-gray-500">Adjusted Price</p>
-                      <p className="text-2xl font-bold text-gray-900">
-                        {formatCurrency(deal.adjustedPrice)}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Includes Growth Scout margin (≈{Math.round(deal.margin * 100)}%)
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div className="rounded-2xl border border-white/20 bg-white/10 p-6 text-center text-white/80">
