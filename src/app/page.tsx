@@ -22,6 +22,8 @@ export default function Home() {
   const [passengers, setPassengers] = useState(1);
   const [results, setResults] = useState<FlightDeal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedDeal, setSelectedDeal] = useState<FlightDeal | null>(null);
+  const [isBooking, setIsBooking] = useState(false);
 
   const cheapestDealId = useMemo(() => {
     if (results.length === 0) return null;
@@ -32,6 +34,16 @@ export default function Home() {
       return deal.adjustedPrice < bestDeal.adjustedPrice ? deal.id : bestId;
     }, null);
   }, [results]);
+
+  const handleBook = (deal: FlightDeal) => {
+    setSelectedDeal(deal);
+    setIsBooking(true);
+  };
+
+  const closeBooking = () => {
+    setIsBooking(false);
+    setSelectedDeal(null);
+  };
 
   const getFlightTimes = (index: number) => {
     const baseHour = 6 + (index % 5) * 2;
@@ -238,6 +250,7 @@ export default function Home() {
 
                         <button
                           type="button"
+                          onClick={() => handleBook(deal)}
                           className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-700"
                         >
                           Book Now
@@ -276,6 +289,90 @@ export default function Home() {
             <p className="text-white/80">Instant confirmation and easy cancellations</p>
           </div>
         </div>
+
+        {isBooking && selectedDeal ? (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-10">
+            <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    Confirm your booking
+                  </h2>
+                  <p className="mt-1 text-sm text-gray-600">
+                    Review the flight details and lock in your fare.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeBooking}
+                  className="rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
+                  aria-label="Close booking modal"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <div className="flex items-center justify-between rounded-2xl bg-gray-50 p-4">
+                  <div>
+                    <p className="text-xs text-gray-500">Airline</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      {selectedDeal.airline}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-gray-500">Destination</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      {selectedDeal.destination}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl bg-gray-50 p-4">
+                    <p className="text-xs text-gray-500">Departure</p>
+                    <p className="mt-1 text-lg font-semibold text-gray-900">
+                      {getFlightTimes(results.findIndex((r) => r.id === selectedDeal.id)).depart}
+                    </p>
+                  </div>
+                  <div className="rounded-2xl bg-gray-50 p-4">
+                    <p className="text-xs text-gray-500">Arrival</p>
+                    <p className="mt-1 text-lg font-semibold text-gray-900">
+                      {getFlightTimes(results.findIndex((r) => r.id === selectedDeal.id)).arrive}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-gray-50 p-4">
+                  <p className="text-xs text-gray-500">Total (including margin)</p>
+                  <p className="mt-1 text-3xl font-bold text-gray-900">
+                    {formatCurrency(selectedDeal.adjustedPrice)}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Includes Growth Scout margin (≈{Math.round(selectedDeal.margin * 100)}%)
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                  <button
+                    type="button"
+                    onClick={closeBooking}
+                    className="rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={closeBooking}
+                    className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-700"
+                  >
+                    Confirm booking
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </main>
     </div>
   );
