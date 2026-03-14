@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 export const runtime = 'edge';
 
 export const metadata: Metadata = {
-  title: "SafarCloud - Smart Travel Booking",
+  title: "SafarCloud - Your AI-Powered Journey",
   description: "Book flights with AI-driven deals and transparent pricing. Travel smarter in 2026 with SafarCloud.",
+  metadataBase: new URL("https://safarcloud.app"),
 };
 
 export default function RootLayout({
