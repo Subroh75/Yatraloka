@@ -54,13 +54,13 @@ export default function BlogPostPage() {
   const schema = generateSchema(post, 'why-yatraloka');
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 py-16">
+    <main className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F] py-16">
       <div className="mx-auto w-full max-w-7xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-3">
             <div className="rounded-3xl bg-white/10 p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
-              <h1 className="text-4xl font-bold text-white">{post.title}</h1>
+              <h1 className="text-4xl font-bold text-[var(--heading)]">{post.title}</h1>
               <p className="mt-2 text-lg text-white/80">{post.description}</p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/70">
                 <span>{post.date}</span>
@@ -76,9 +76,9 @@ export default function BlogPostPage() {
                 <h3 className="text-xl font-semibold text-white mb-4">Ready to Book Your Trip?</h3>
                 <Link
                   href="/"
-                  className="inline-block rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-700"
+                  className="inline-block rounded-xl bg-[var(--button)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[rgba(0,210,255,0.25)] transition hover:opacity-90"
                 >
-                  Search Flights Now
+                  Explore Horizon
                 </Link>
               </div>
 

@@ -112,10 +112,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const schema = generateSchema(post, params.slug);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 py-16">
+    <main className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F] py-16">
       <div className="mx-auto w-full max-w-4xl px-4">
         <div className="rounded-3xl bg-white/10 p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
-          <h1 className="text-4xl font-bold text-white">{post.title}</h1>
+          <h1 className="text-4xl font-bold text-[var(--heading)]">{post.title}</h1>
           <p className="mt-2 text-lg text-white/80">{post.description}</p>
           <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/70">
             <span>{post.date}</span>

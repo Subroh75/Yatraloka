@@ -83,7 +83,7 @@ export default function Home() {
     }).format(value);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+    <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F]">
       {/* Header */}
       <header className="flex items-center justify-between p-6">
         <div className="text-white text-2xl font-bold">Yatraloka</div>
@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="flex flex-col items-center justify-center px-4 py-20">
-        <h1 className="text-4xl md:text-6xl font-bold text-white text-center mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-[var(--heading)] text-center mb-4">
           Discover Your Next Adventure
         </h1>
         <p className="text-xl text-white/80 text-center mb-12 max-w-2xl">
@@ -113,7 +113,7 @@ export default function Home() {
         </p>
 
         {/* Smart Search Bar */}
-        <div className="w-full max-w-4xl bg-white/20 backdrop-blur-md rounded-2xl border border-white/20 p-6 shadow-2xl">
+        <div className="w-full max-w-4xl bg-white/20 backdrop-blur-md rounded-2xl border border-white/10 p-6 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <div className="relative">
               <Plane className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -163,7 +163,7 @@ export default function Home() {
             type="button"
             onClick={handleSearch}
             disabled={isLoading}
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full bg-[var(--button)] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isLoading ? (
               <>
@@ -173,7 +173,7 @@ export default function Home() {
             ) : (
               <>
                 <Search className="h-5 w-5" />
-                Search Flights
+                Explore Horizon
               </>
             )}
           </button>
@@ -193,7 +193,7 @@ export default function Home() {
                   return (
                     <div
                       key={deal.id}
-                      className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/40"
+                      className="relative bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/10"
                     >
                       {isCheapest && (
                         <div className="absolute right-4 top-4 flex items-center gap-2 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white shadow">
@@ -257,9 +257,9 @@ export default function Home() {
                         <button
                           type="button"
                           onClick={() => handleBook(deal)}
-                          className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-700"
+                          className="rounded-xl bg-[var(--button)] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[rgba(0,210,255,0.25)] transition hover:opacity-90"
                         >
-                          Book Now
+                          Start Your Safar
                         </button>
                       </div>
                     </div>
@@ -302,7 +302,7 @@ export default function Home() {
               <div className="flex items-start justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">
-                    {bookingConfirmed ? 'Booked!' : 'Confirm your booking'}
+                    {bookingConfirmed ? 'Safar Confirmed!' : 'Confirm Your Safar'}
                   </h2>
                   <p className="mt-1 text-sm text-gray-600">
                     {bookingConfirmed
@@ -393,9 +393,9 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={handleConfirmBooking}
-                        className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-700"
+                        className="rounded-xl bg-[var(--button)] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[rgba(0,210,255,0.25)] hover:opacity-90"
                       >
-                        Confirm booking
+                        Confirm Your Safar
                       </button>
                     </div>
                   </>

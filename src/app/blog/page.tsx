@@ -31,10 +31,10 @@ export default function BlogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F] py-16">
       <div className="mx-auto w-full max-w-5xl px-4">
         <div className="rounded-3xl bg-white/10 p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
-          <h1 className="text-4xl font-bold text-white">Yatraloka Blog</h1>
+          <h1 className="text-4xl font-bold text-[var(--heading)]">Yatraloka Blog</h1>
           <p className="mt-2 max-w-2xl text-lg text-white/80">
             Inspiration, tips, and travel guides to help you book smarter and explore
             further.
@@ -52,7 +52,7 @@ export default function BlogPage() {
                 <p className="mt-3 text-sm text-gray-600">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.id}`}
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--button)] hover:opacity-90"
                 >
                   Read more →
                 </Link>
