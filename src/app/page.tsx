@@ -86,7 +86,10 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F]">
       {/* Header */}
       <header className="flex items-center justify-between p-6">
-        <div className="text-white text-2xl font-bold">Yatraloka</div>
+        <div className="flex items-center gap-3 text-white">
+          <img src="/safarcloud-logo.svg" alt="SafarCloud" className="h-10 w-10" />
+          <span className="text-2xl font-bold">SafarCloud</span>
+        </div>
         <nav className="hidden md:flex space-x-6">
           <a href="#" className="text-white hover:text-gray-200">
             Flights
@@ -405,6 +408,12 @@ export default function Home() {
           </div>
         ) : null}
       </main>
+
+      <footer className="mt-16 border-t border-white/10 py-10 text-center text-white/70">
+        <p className="text-sm">
+          © {new Date().getFullYear()} SafarCloud — Making every Safar as light as a cloud.
+        </p>
+      </footer>
     </div>
   );
 }

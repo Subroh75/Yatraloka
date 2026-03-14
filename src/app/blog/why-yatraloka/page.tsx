@@ -3,19 +3,19 @@
 import Link from 'next/link';
 
 const post = {
-  title: 'Why YatraLoka is the Smartest Way to Book Travel in 2026',
+  title: 'Why SafarCloud is the Smartest Way to Book Travel in 2026',
   description: 'Discover how our AI-driven platform revolutionizes travel booking with transparent pricing and unbeatable value.',
   date: '2026-03-14',
-  author: 'Yatraloka Team',
+  author: 'SafarCloud Team',
   tags: ['travel', 'AI', 'booking', 'transparency'],
   content: `
 <h2>Revolutionizing Travel Booking with AI</h2>
-<p>In 2026, travel booking is no longer about endless scrolling through confusing sites. At YatraLoka, we've harnessed the power of AI to make finding the best deals effortless. Our 'Best Value' search algorithm analyzes thousands of flights in real-time, prioritizing options that offer the most savings without compromising quality.</p>
+<p>In 2026, travel booking is no longer about endless scrolling through confusing sites. At SafarCloud, we've harnessed the power of AI to make finding the best deals effortless. Our 'Best Value' search algorithm analyzes thousands of flights in real-time, prioritizing options that offer the most savings without compromising quality.</p>
 
 <h2>Transparent Pricing You Can Trust</h2>
 <p>Unlike traditional platforms that hide markups, we charge a clear 5% transparency fee on every booking. This means you see exactly what you're paying for — no hidden corporate profits eating into your travel budget. Our Growth Scout margin is applied upfront, so you can book with confidence knowing you're getting genuine value.</p>
 
-<h2>Why Choose YatraLoka?</h2>
+<h2>Why Choose SafarCloud?</h2>
 <ul>
   <li><strong>AI-Powered Search:</strong> Instant recommendations tailored to your preferences.</li>
   <li><strong>Real-Time Deals:</strong> Limited-time offers highlighted automatically.</li>
@@ -24,7 +24,7 @@ const post = {
 </ul>
 
 <h2>Ready to Travel Smarter?</h2>
-<p>Start your journey with YatraLoka today. Search for flights, discover deals, and book with peace of mind.</p>
+<p>Start your journey with SafarCloud today. Search for flights, discover deals, and book with peace of mind.</p>
 `,
 };
 
@@ -73,7 +73,7 @@ export default function BlogPostPage() {
               </article>
 
               <div className="mt-10 rounded-2xl bg-white/20 p-6 text-center">
-                <h3 className="text-xl font-semibold text-white mb-4">Ready to Book Your Trip?</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Ready to Book Your Safar?</h3>
                 <Link
                   href="/"
                   className="inline-block rounded-xl bg-[var(--button)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[rgba(0,210,255,0.25)] transition hover:opacity-90"
@@ -95,7 +95,7 @@ export default function BlogPostPage() {
               <ul className="space-y-3">
                 <li>
                   <Link href="/blog/welcome-to-yatraloka" className="text-white/80 hover:text-white text-sm">
-                    Welcome to Yatraloka
+                    Welcome to SafarCloud
                   </Link>
                 </li>
                 <li>

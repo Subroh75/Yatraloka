@@ -13,16 +13,16 @@ type BlogPost = {
 
 const posts: Record<string, BlogPost> = {
   'welcome-to-yatraloka': {
-    title: 'Welcome to Yatraloka: Your Travel Planning HQ',
+    title: 'Welcome to SafarCloud: Your Travel Planning HQ',
     description:
       'Get started with our latest deals, travel tips, and curated destination guides.',
     date: '2026-03-14',
-    author: 'Yatraloka Team',
+    author: 'SafarCloud Team',
     tags: ['travel', 'deals', 'tips'],
     content: `
 <h2>Start Exploring Today</h2>
 
-<p>Welcome to <strong>Yatraloka</strong> — your one-stop destination for finding the best flight deals and planning unforgettable trips. Our goal is to help you travel smart, spend less, and discover new places with confidence.</p>
+<p>Welcome to <strong>SafarCloud</strong> — your one-stop destination for finding the best flight deals and planning unforgettable trips. Our goal is to help you travel smart, spend less, and discover new places with confidence.</p>
 
 <h3>What you can do here</h3>
 <ul>
@@ -40,7 +40,7 @@ const posts: Record<string, BlogPost> = {
     description:
       'Discover underrated destinations that deliver unforgettable experiences.',
     date: '2026-03-14',
-    author: 'Yatraloka Team',
+    author: 'SafarCloud Team',
     tags: ['destinations', 'travel'],
     content: `
 <h2>Step Off the Beaten Path</h2>
@@ -63,7 +63,7 @@ const posts: Record<string, BlogPost> = {
     description:
       'Learn simple tricks that help you score better fares and travel smarter.',
     date: '2026-03-14',
-    author: 'Yatraloka Team',
+    author: 'SafarCloud Team',
     tags: ['flights', 'money-saving', 'travel'],
     content: `
 <h2>Smart Search Strategies</h2>

@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 export const runtime = 'edge';
 
 export const metadata: Metadata = {
-  title: "Yatraloka - Smart Travel Booking",
-  description: "Book flights with AI-driven deals and transparent pricing. Travel smarter in 2026.",
+  title: "SafarCloud - Smart Travel Booking",
+  description: "Book flights with AI-driven deals and transparent pricing. Travel smarter in 2026 with SafarCloud.",
 };
 
 export default function RootLayout({

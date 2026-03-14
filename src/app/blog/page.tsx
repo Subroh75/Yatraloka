@@ -6,13 +6,13 @@ export default function BlogPage() {
   const posts = [
     {
       id: 'why-yatraloka',
-      title: 'Why YatraLoka is the Smartest Way to Book Travel in 2026',
+      title: 'Why SafarCloud is the Smartest Way to Book Travel in 2026',
       excerpt:
         'Discover how our AI-driven platform revolutionizes travel booking with transparent pricing and unbeatable value.',
     },
     {
       id: 'welcome-to-yatraloka',
-      title: 'Welcome to Yatraloka: Your Travel Planning HQ',
+      title: 'Welcome to SafarCloud: Your Travel Planning HQ',
       excerpt:
         'Get started with our latest deals, travel tips, and curated destination guides.',
     },
@@ -34,7 +34,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#F0F4F8] via-[#A2D2FF] to-[#FF7E5F] py-16">
       <div className="mx-auto w-full max-w-5xl px-4">
         <div className="rounded-3xl bg-white/10 p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
-          <h1 className="text-4xl font-bold text-[var(--heading)]">Yatraloka Blog</h1>
+          <h1 className="text-4xl font-bold text-[var(--heading)]">SafarCloud Blog</h1>
           <p className="mt-2 max-w-2xl text-lg text-white/80">
             Inspiration, tips, and travel guides to help you book smarter and explore
             further.
